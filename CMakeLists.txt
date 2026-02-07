@@ -79,7 +79,10 @@ if(Git_FOUND OR NGSCOPECLIENT_PACKAGE_VERSION)
 
 	# No release matched
 	else()
-		message(FATAL_ERROR "Unrecognized version tag ${NGSCOPECLIENT_VERSION} / ${NGSCOPECLIENT_VERSION_LONG}, can't create a VERSIONINFO from it. Must be of format v1.2, v1.2.3, v1.2-rc3, v1.2.3-rc4")
+		message(WARNING "Unrecognized version tag ${NGSCOPECLIENT_VERSION}. Using fallback version for fork.")
+		set(NGSCOPECLIENT_VERSION "v0.0.0-fork")
+		set(NGSCOPECLIENT_VERSION_LONG "v0.0.0-fork-0-g${NGSCOPECLIENT_VERSION}")
+		set(MSI_VERSION "0.0.0.0")
 	endif()
 
 else()
